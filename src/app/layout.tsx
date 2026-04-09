@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -113,6 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );
