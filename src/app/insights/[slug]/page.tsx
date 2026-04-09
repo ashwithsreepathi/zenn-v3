@@ -15,10 +15,6 @@ export async function generateStaticParams() {
 }
 
 // ── Metadata ───────────────────────────────────────────────────────────────────
-// Change this:
-export async function generateMetadata(props: PageProps<"/insights/[slug]">)
-
-// To this:
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
