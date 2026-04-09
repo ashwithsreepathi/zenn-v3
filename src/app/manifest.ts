@@ -35,7 +35,6 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         src: "/screenshot-wide.png",
         sizes: "1280x720",
-        // @ts-expect-error — 'form_factor' is valid per Web Manifest spec but not yet in Next.js types
         form_factor: "wide",
         type: "image/png",
         label: "Zenn Studios — Architects of the Unforgettable",
