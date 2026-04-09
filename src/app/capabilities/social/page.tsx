@@ -1,5 +1,8 @@
 import FadeIn from "@/components/FadeIn";
-import { ArrowRight, BarChart3, Clock, Facebook, Instagram, Linkedin, MessageSquare, Play, Target, Users } from "lucide-react";
+import { ArrowRight, BarChart3, Clock, MessageSquare, Play, Target, Users } from "lucide-react";
+import { CircleFadingPlus as Facebook } from "lucide-react";
+import { CircleFadingPlus as Instagram } from "lucide-react";
+import { CircleFadingPlus as Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export default function SocialCapability() {

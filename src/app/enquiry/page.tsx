@@ -14,7 +14,7 @@ const plannerSchema = z.object({
   companyName: z.string().min(2, "Company name is required"),
   email: z.string().email("Please enter a valid email address"),
   capability: z.enum(["software", "branding", "media", "social"], {
-    required_error: "Please select a core capability.",
+    error: "Please select a core capability.",
   }),
   budget: z.string().min(1, "Please select a budget range"),
   timeline: z.string().min(1, "Please select a timeline"),
