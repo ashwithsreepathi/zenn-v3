@@ -15,15 +15,17 @@ export async function generateStaticParams() {
 }
 
 // ── Metadata ───────────────────────────────────────────────────────────────────
-export async function generateMetadata(
-  props: PageProps<"/insights/[slug]">
-): Promise<Metadata> {
+// Change this:
+export async function generateMetadata(props: PageProps<"/insights/[slug]">)
+
+// To this:
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Not Found | Zenn Insights" };
+
   return {
-    title: `${post.headline} | Zenn Insights | Zenn Studios`,
-    description: post.excerpt,
+    title: post?.title || "Post Not Found",
+    // ... rest of your metadata
   };
 }
 
