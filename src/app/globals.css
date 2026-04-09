@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #b6332e;
+  --color-brand-secondary: #1f1f1f;
+  --color-surface-low: #09090B;
+  --color-surface-medium: #18181B;
+
+  --animate-infinite-scroll: infinite-scroll 40s linear infinite;
+
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --brand-primary: #b6332e;
+  --brand-secondary: #1f1f1f;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+@layer components {
+  /* Antigravity Glass Effect */
+  .glass-card {
+    @apply bg-zinc-900/50 backdrop-blur-md border border-zinc-800 hover:border-brand-primary/50 transition-all duration-500;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Primary Color Glow for Hover States */
+  .glow-hover:hover {
+    box-shadow: 0 0 25px rgba(182, 51, 46, 0.15);
+  }
+}
+
+/* Fallback for the animation if using standard CSS */
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
