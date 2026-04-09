@@ -86,7 +86,7 @@ function WorkflowDiagram({ steps }: { steps: string[] }) {
 }
 
 // ── Page ───────────────────────────────────────────────────────────────────────
-export default async function BlogPostPage(props: PageProps<"/insights/[slug]">) {
+export default async function BlogPostPage(props: PageProps) {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
 
