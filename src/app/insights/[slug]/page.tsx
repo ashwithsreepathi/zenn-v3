@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { PageProps } from "next";
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 import { ArrowLeft, ArrowRight, Calendar, Clock, User } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { getPostBySlug, getAllSlugs } from "../blogData";
