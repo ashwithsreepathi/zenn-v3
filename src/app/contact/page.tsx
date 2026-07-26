@@ -1,6 +1,7 @@
 "use client";
 
 import FadeIn from "@/components/FadeIn";
+import GoogleMap from "@/components/GoogleMap";
 import { AtSign, CheckCircle, ExternalLink, MapPin, Phone, Send } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -53,17 +54,17 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FadeIn>
-              <a href="mailto:hello@zennstudios.com" className="glass-card p-10 rounded-2xl flex flex-col items-center justify-center text-center group h-full">
+              <a href="mailto:ash@zennstudios.com" className="glass-card p-10 rounded-2xl flex flex-col items-center justify-center text-center group h-full">
                 <AtSign className="w-10 h-10 text-brand-primary mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-bold mb-2">Email</h3>
-                <p className="text-zinc-400 group-hover:text-white transition-colors">hello@zennstudios.com</p>
+                <p className="text-zinc-400 group-hover:text-white transition-colors">ash@zennstudios.com</p>
               </a>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <a href="tel:+18005550199" className="glass-card p-10 rounded-2xl flex flex-col items-center justify-center text-center group h-full">
+              <a href="tel:+15483893697" className="glass-card p-10 rounded-2xl flex flex-col items-center justify-center text-center group h-full">
                 <Phone className="w-10 h-10 text-brand-primary mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-bold mb-2">Phone</h3>
-                <p className="text-zinc-400 group-hover:text-white transition-colors">1 (800) 555-0199</p>
+                <p className="text-zinc-400 group-hover:text-white transition-colors">+1 (548) 389-3697</p>
               </a>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -71,9 +72,8 @@ export default function Contact() {
                 <ExternalLink className="w-10 h-10 text-brand-primary mb-6" />
                 <h3 className="text-xl font-bold mb-4">Socials</h3>
                 <div className="flex gap-4">
-                  <a href="#" className="text-zinc-400 hover:text-white transition-colors">Instagram</a>
-                  <a href="#" className="text-zinc-400 hover:text-white transition-colors">LinkedIn</a>
-                  <a href="#" className="text-zinc-400 hover:text-white transition-colors">Vimeo</a>
+                  <a href="https://instagram.com/zenn_stuudios_" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">Instagram</a>
+                  <a href="https://ca.linkedin.com/company/zenn-studios" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">LinkedIn</a>
                 </div>
               </div>
             </FadeIn>
@@ -97,54 +97,57 @@ export default function Contact() {
                   <CheckCircle className="w-16 h-16 text-brand-primary mb-6" />
                   <h3 className="text-2xl font-bold mb-2">Message Received</h3>
                   <p className="text-zinc-400">We'll get back to you within 24-48 hours.</p>
-                  <button onClick={() => setIsSuccess(false)} className="mt-8 text-brand-primary hover:text-white text-sm font-semibold transition-colors">
-                    Send another message
-                  </button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-zinc-400 mb-2">Name</label>
-                      <input 
-                        {...register("name")}
-                        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
-                        placeholder="John Doe"
-                      />
-                      {errors.name && <p className="text-red-500 text-xs mt-2">{errors.name.message}</p>}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-zinc-400 mb-2">Email</label>
-                      <input 
-                        {...register("email")}
-                        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
-                        placeholder="john@example.com"
-                      />
-                      {errors.email && <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>}
-                    </div>
-                  </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Subject</label>
-                    <input 
-                      {...register("subject")}
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
-                      placeholder="General Inquiry"
+                    <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Your Name</label>
+                    <input
+                      {...register("name")}
+                      type="text"
+                      placeholder="Jane Doe"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary"
                     />
-                    {errors.subject && <p className="text-red-500 text-xs mt-2">{errors.subject.message}</p>}
+                    {errors.name && <p className="text-brand-primary text-xs mt-1">{errors.name.message}</p>}
                   </div>
+
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Message</label>
-                    <textarea 
+                    <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Your Email</label>
+                    <input
+                      {...register("email")}
+                      type="email"
+                      placeholder="jane@example.com"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary"
+                    />
+                    {errors.email && <p className="text-brand-primary text-xs mt-1">{errors.email.message}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Subject</label>
+                    <input
+                      {...register("subject")}
+                      type="text"
+                      placeholder="General Inquiry / Hello"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary"
+                    />
+                    {errors.subject && <p className="text-brand-primary text-xs mt-1">{errors.subject.message}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Message</label>
+                    <textarea
                       {...register("message")}
                       rows={5}
-                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors resize-none"
-                      placeholder="How can we help?"
+                      placeholder="How can we help you?"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary resize-none"
                     />
-                    {errors.message && <p className="text-red-500 text-xs mt-2">{errors.message.message}</p>}
+                    {errors.message && <p className="text-brand-primary text-xs mt-1">{errors.message.message}</p>}
                   </div>
-                  <button 
+
+                  <button
+                    type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-brand-primary hover:bg-brand-primary/80 text-white rounded-xl px-6 py-4 font-bold flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-brand-primary hover:bg-brand-primary/80 text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center"
                   >
                     {isSubmitting ? "Sending..." : (
                       <>Send Message <Send className="w-4 h-4 ml-2" /></>
@@ -163,36 +166,35 @@ export default function Contact() {
           {/* Sidebar */}
           <div className="w-full lg:w-1/3 bg-zinc-950 p-12 lg:p-20 flex flex-col justify-center border-r border-zinc-900 relative z-10">
             <FadeIn>
-              <h2 className="text-3xl font-bold mb-10 tracking-tighter">Visit the Studio</h2>
+              <h2 className="text-3xl font-bold mb-10 tracking-tighter">Location & Hours</h2>
               
               <div className="space-y-8">
                 <div>
                   <div className="flex items-start text-zinc-400">
                     <MapPin className="w-5 h-5 text-brand-primary mr-3 mt-1 flex-shrink-0" />
                     <div>
-                      <p className="text-white font-semibold mb-1">Physical Address</p>
-                      <p>123 Innovation Drive<br />Vancouver, BC V6B 1A1</p>
+                      <p className="text-white font-semibold mb-1">Base & Studio</p>
+                      <p>Brantford, ON &bull; GTA<br /><span className="text-xs text-zinc-500 font-mono">(Home Office & Local Client Visits)</span></p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="pl-8 border-l border-zinc-800">
-                  <p className="text-white font-semibold mb-1">Office Hours</p>
-                  <p className="text-zinc-500 text-sm">Mon–Fri, 9:00 AM – 6:00 PM</p>
+                  <p className="text-white font-semibold mb-1">Operating Hours</p>
+                  <p className="text-zinc-400 text-sm font-mono">10:00 AM – 6:00 PM EST</p>
                 </div>
                 
                 <div className="pl-8 border-l border-zinc-800">
-                  <p className="text-white font-semibold mb-1">Parking</p>
-                  <p className="text-zinc-500 text-sm">Designated visitor parking is accessible behind the building via the alleyway. Proceed to level P1.</p>
+                  <p className="text-white font-semibold mb-1">Contact Email</p>
+                  <p className="text-zinc-400 text-sm font-mono">ash@zennstudios.com</p>
                 </div>
               </div>
             </FadeIn>
           </div>
           
-          {/* Map (Placeholder) */}
-          <div className="w-full lg:w-2/3 h-[400px] lg:h-full relative overflow-hidden group cursor-crosshair">
-            <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
-            <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Vancouver,BC&zoom=13&size=1000x800&maptype=roadmap&style=feature:all|element:labels.text.fill|color:0x9ca3af&style=feature:all|element:labels.text.stroke|color:0x000000&style=feature:landscape|element:geometry|color:0x000000&style=feature:poi|element:geometry|color:0x282828&style=feature:road.highway|element:geometry.fill|color:0x000000&style=feature:road.highway|element:geometry.stroke|color:0x1f2937&style=feature:road.arterial|element:geometry|color:0x000000&style=feature:road.local|element:geometry|color:0x000000&style=feature:transit|element:geometry|color:0x282828&style=feature:water|element:geometry|color:0x111111')] bg-cover bg-center transition-transform duration-[20s] ease-linear group-hover:scale-105"></div>
+          {/* Live Google Map */}
+          <div className="w-full lg:w-2/3 h-[400px] lg:h-full">
+            <GoogleMap className="w-full h-full rounded-none border-0" />
           </div>
         </div>
       </section>

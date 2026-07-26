@@ -1,5 +1,5 @@
 import FadeIn from "@/components/FadeIn";
-import { ArrowRight, Beaker, Cpu, FolderKanban, Lightbulb, TrendingUp } from "lucide-react";
+import { ArrowRight, Beaker, Cpu, FolderKanban, Gavel, Lightbulb, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 const concepts = [
@@ -10,6 +10,14 @@ const concepts = [
     stage: "In Development",
     desc: "A comprehensive SaaS platform replacing fragmented restaurant operations—from POS to inventory, staff scheduling, and analytics—with a single, AI-driven intelligence layer.",
     icon: Cpu,
+  },
+  {
+    slug: "ahlc",
+    name: "AHLC",
+    subtitle: "All-in-One Pallet & Liquidation Warehouse Platform",
+    stage: "In Development",
+    desc: "A comprehensive SaaS for liquidation warehouse and pallet business owners — featuring self-hosted auctions, pallet product entry and cataloging, POS integration, retail store and online sales management, and full warehouse operations.",
+    icon: Gavel,
   },
   {
     slug: "rydeplus",

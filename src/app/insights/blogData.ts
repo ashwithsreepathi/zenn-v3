@@ -28,6 +28,7 @@ export interface BlogPost {
         code: string;
       };
       diagramSteps?: string[];
+      imageGrid?: { src: string; alt: string; caption?: string }[];
     }[];
   };
   proof: {
@@ -44,6 +45,7 @@ export interface BlogPost {
     excerpt: string;
     readTime: string;
   }[];
+  galleryImages?: { src: string; alt: string; caption?: string }[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -464,6 +466,950 @@ export default async function RatesPage() {
         title: "Color Grading the Experience: The Art of Fine Dining Media",
         excerpt:
           "The post-production philosophy that makes restaurant photography feel alive.",
+        readTime: "7 min read",
+      },
+    ],
+  },
+
+  // ─── Post 5: Dragons Inn ──────────────────────────────────────────────────
+  {
+    slug: "engineering-hospitality-dragons-inn-erp",
+    category: "Code & Architecture",
+    categorySlug: "software",
+    capabilityHref: "/capabilities/software",
+    capabilityLabel: "Software Development",
+    headline:
+      "Engineering Hospitality: Building a Restaurant ERP for Dragons Inn",
+    byline: {
+      date: "May 12, 2026",
+      author: "Zenn Engineering",
+    },
+    excerpt:
+      "How we replaced five disconnected tools with a single, unified restaurant management platform — from reservations to kitchen display.",
+    readTime: "10 min read",
+    intro: {
+      heading: "Five Tools, One Kitchen, Zero Cohesion",
+      paragraphs: [
+        "Dragons Inn was running on a stack of disconnected tools: a third-party reservation widget, a separate POS terminal, a spreadsheet for inventory, a WhatsApp group for staff scheduling, and a paper-based kitchen order system. Each tool worked in isolation, creating data silos that made it impossible to see the full operational picture.",
+        "The brief was clear: build one system that replaces all five. A single platform where the front-of-house, kitchen, and management team all operate from the same source of truth — in real-time.",
+      ],
+    },
+    deepDive: {
+      heading: "A Unified Operations Layer",
+      sections: [
+        {
+          h2: "Reservation Intelligence",
+          paragraphs: [
+            "The reservation module was designed to be more than a calendar. It integrates table management with historical guest data, enabling the host to see returning guests, dietary preferences, and average party size before they walk through the door. The system also provides real-time table availability that syncs with the website's booking widget — eliminating double-bookings entirely.",
+            "We built a waitlist algorithm that estimates seating time based on current table occupancy and average dining duration, giving guests an accurate wait time rather than a hopeful guess.",
+          ],
+        },
+        {
+          h2: "Kitchen Display System",
+          h3: "From Paper Tickets to Digital Orchestration",
+          paragraphs: [
+            "The kitchen display system (KDS) replaced paper tickets with a real-time digital queue. Orders flow directly from the POS to kitchen screens, color-coded by preparation stage. Expeditors can drag and drop orders to reprioritize during rush periods, and completed dishes trigger automatic notifications to the serving team.",
+            "This alone reduced average ticket time by 23% in the first month — not because the kitchen got faster, but because the communication layer between front-of-house and back-of-house became frictionless.",
+          ],
+        },
+        {
+          h2: "Photography That Sells the Experience",
+          paragraphs: [
+            "Alongside the ERP build, we photographed Dragons Inn's signature dishes and dining atmosphere. These images weren't just for the website — they were integrated directly into the menu management system, allowing staff to show guests visual representations of dishes on tablets. The photography also powered the social media content calendar we built into the platform.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Dragons Inn",
+      clientSlug: "dragonsinn",
+      body: "Dragons Inn's unified ERP platform replaced five separate tools with a single system serving front-of-house, kitchen, and management. Within three months of deployment, operational efficiency improved measurably across all departments, and the integrated photography drove a significant increase in online reservation conversions.",
+      metrics: [
+        { label: "Ticket Time", value: "-23%" },
+        { label: "Tools Replaced", value: "5" },
+        { label: "Double Bookings", value: "0" },
+      ],
+    },
+    related: [
+      {
+        slug: "nextjs-speed-of-trust-montax",
+        category: "Code & Architecture",
+        title: "Next.js and the Speed of Trust: Engineering a Financial Platform",
+        excerpt: "How server components and edge functions create a premium user experience.",
+        readTime: "12 min read",
+      },
+      {
+        slug: "scaling-wholesale-mk-food-erp",
+        category: "Code & Architecture",
+        title: "Scaling Wholesale: The MK Food Company Inventory ERP",
+        excerpt: "How custom logistics software eliminated operational bottlenecks in food distribution.",
+        readTime: "9 min read",
+      },
+      {
+        slug: "color-grading-fine-dining-media",
+        category: "Production Logic",
+        title: "Color Grading the Experience: The Art of Fine Dining Media",
+        excerpt: "The post-production philosophy that makes restaurant photography feel alive.",
+        readTime: "7 min read",
+      },
+    ],
+  },
+
+  // ─── Post 6: MK Food Company ──────────────────────────────────────────────
+  {
+    slug: "scaling-wholesale-mk-food-erp",
+    category: "Code & Architecture",
+    categorySlug: "software",
+    capabilityHref: "/capabilities/software",
+    capabilityLabel: "Software Development",
+    headline:
+      "Scaling Wholesale: The MK Food Company Inventory ERP",
+    byline: {
+      date: "April 28, 2026",
+      author: "Zenn Engineering",
+    },
+    excerpt:
+      "How custom logistics software eliminated operational bottlenecks and allowed wholesale food distribution to scale significantly.",
+    readTime: "9 min read",
+    intro: {
+      heading: "The Spreadsheet Ceiling",
+      paragraphs: [
+        "MK Food Company had outgrown spreadsheets. As a wholesale food distributor serving dozens of restaurant and retail clients, their inventory tracking was entirely manual: purchase orders logged in Excel, stock levels updated by hand, and delivery routes planned on paper maps. Every scaling attempt hit the same ceiling — the operational infrastructure couldn't keep pace with demand.",
+        "They needed a system that could track inventory from supplier intake to client delivery, automate reorder thresholds, and provide real-time visibility into what was in the warehouse and what was on the road.",
+      ],
+    },
+    deepDive: {
+      heading: "Building the Logistics Brain",
+      sections: [
+        {
+          h2: "Intake to Delivery: The Full Pipeline",
+          paragraphs: [
+            "We designed the ERP around the concept of a 'unit journey' — tracking each product unit from the moment it enters the warehouse to the moment it reaches the client's loading dock. Every scan, movement, and status change is logged, creating an immutable audit trail that satisfies both internal quality control and external compliance requirements.",
+            "The intake module uses barcode scanning to log incoming shipments against purchase orders automatically. Discrepancies are flagged immediately, reducing the receiving error rate that had been costing MK Food significant losses annually.",
+          ],
+        },
+        {
+          h2: "Automated Reorder Intelligence",
+          h3: "Predicting Demand Before It Arrives",
+          paragraphs: [
+            "The reorder system uses a rolling average consumption model combined with lead-time awareness. Rather than setting static reorder points, the system continuously adjusts thresholds based on actual consumption velocity and supplier delivery timelines. This means high-velocity items get reordered earlier during peak seasons, and slow-movers don't accumulate unnecessary carrying costs.",
+            "This approach reduced stockout events significantly while simultaneously lowering average inventory carrying costs — a paradox only achievable with intelligent, data-driven procurement.",
+          ],
+        },
+        {
+          h2: "Visual Documentation of Operations",
+          paragraphs: [
+            "We photographed MK Food Company's warehouse operations, product lines, and delivery processes as part of the project. These images serve dual purposes: they populate the company's marketing materials and website, and they provide visual documentation for the operational procedures manual integrated into the ERP's training module.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "MK Food Company",
+      clientSlug: "mkfoodco",
+      body: "MK Food Company's custom ERP replaced manual spreadsheet tracking with an automated, end-to-end logistics platform. The system processes hundreds of SKUs across multiple product categories, with real-time inventory visibility and automated reorder intelligence driving operational efficiency gains across the entire supply chain.",
+      metrics: [
+        { label: "Stockouts", value: "-67%" },
+        { label: "Carrying Cost", value: "-31%" },
+        { label: "SKUs Managed", value: "800+" },
+      ],
+    },
+    related: [
+      {
+        slug: "engineering-hospitality-dragons-inn-erp",
+        category: "Code & Architecture",
+        title: "Engineering Hospitality: Building a Restaurant ERP",
+        excerpt: "How we replaced five disconnected tools with a unified restaurant management platform.",
+        readTime: "10 min read",
+      },
+      {
+        slug: "nextjs-speed-of-trust-montax",
+        category: "Code & Architecture",
+        title: "Next.js and the Speed of Trust: Engineering a Financial Platform",
+        excerpt: "How the App Router and RSC changed the way we think about performance.",
+        readTime: "12 min read",
+      },
+      {
+        slug: "24-hour-turns-high-velocity-retail-video",
+        category: "Social Velocity",
+        title: "24-Hour Turns: Mastering High-Velocity Video for Retail",
+        excerpt: "The content system and production workflow that lets a retail brand post daily.",
+        readTime: "9 min read",
+      },
+    ],
+  },
+
+  // ─── Post 7: Purelixr ─────────────────────────────────────────────────────
+  {
+    slug: "luxury-in-every-frame-purelixr-photography",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Luxury in Every Frame: Crafting the Purelixr Perfume Brand Through Photography",
+    byline: {
+      date: "May 5, 2026",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "How we built a premium perfume brand's visual identity entirely through cinematic product photography and art direction.",
+    readTime: "8 min read",
+    intro: {
+      heading: "A Fragrance You Can See",
+      paragraphs: [
+        "Perfume is invisible. You can't photograph a scent. Yet the entire commercial success of a fragrance brand depends on visual storytelling — the bottle becomes the protagonist, and the photography must communicate what the nose cannot. For Purelixr, a premium perfume brand launching in the Canadian market, the photography wasn't supplementary to the brand — it was the brand.",
+        "Our brief was to create a visual language so compelling that a consumer scrolling Instagram would stop, feel luxury, and associate that feeling with the Purelixr name — all from a single image.",
+      ],
+    },
+    deepDive: {
+      heading: "The Art of Product Storytelling",
+      sections: [
+        {
+          h2: "Set Design as Brand Architecture",
+          paragraphs: [
+            "Every Purelixr product shot begins with set design, not camera placement. The set communicates the brand's positioning before the bottle is even visible. We designed three distinct set environments: a minimalist marble surface for the signature line, a botanical arrangement for the natural collection, and a dark, reflective obsidian surface for the evening range.",
+            "Each set was built with precision lighting channels that allow us to control reflections on the glass bottle independently from the background. This level of control means the bottle always appears luminous — lit from within — while the environment provides mood without competition.",
+          ],
+        },
+        {
+          h2: "Macro Photography and Texture",
+          h3: "Revealing the Details the Eye Misses",
+          paragraphs: [
+            "We shot a series of extreme macro images of the Purelixr bottles — capturing the texture of the cap material, the refraction patterns through the glass, and the color gradients of the perfume liquid itself. These macro shots serve as secondary brand assets: they appear as background textures on the website, as abstract patterns in print collateral, and as Instagram story backgrounds.",
+            "The technical challenge with macro perfume photography is managing depth of field. At extreme magnification, the plane of focus is millimeters thin. We used focus stacking — capturing 15-20 images at different focus distances and compositing them — to achieve a final image where every surface detail is sharp from front to back.",
+          ],
+        },
+        {
+          h2: "Lifestyle Integration",
+          paragraphs: [
+            "Beyond the product shots, we created a lifestyle campaign that places Purelixr in aspirational contexts without showing faces. Hands reaching for a bottle on a vanity. A bottle resting beside a journal on a sunlit table. These images communicate use-case and desirability without relying on traditional fragrance advertising tropes. The approach positions Purelixr as a quiet luxury brand — one that doesn't shout, but commands attention.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Purelixr",
+      clientSlug: "embersgrillehouse",
+      body: "The Purelixr photography campaign produced a comprehensive library of product and lifestyle imagery that became the foundation of the brand's visual identity. The images power the website, social media, and print materials — creating a cohesive luxury aesthetic that positioned Purelixr as a premium entrant in the Canadian fragrance market.",
+      metrics: [
+        { label: "Images Delivered", value: "200+" },
+        { label: "Campaign Duration", value: "5 days" },
+        { label: "Sets Built", value: "3" },
+      ],
+    },
+    related: [
+      {
+        slug: "color-grading-fine-dining-media",
+        category: "Production Logic",
+        title: "Color Grading the Experience: The Art of Fine Dining Media",
+        excerpt: "How post-production decisions shape appetite, atmosphere, and brand perception.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "symbols-of-support-mycrosscanada-identity",
+        category: "Brand Theory",
+        title: "Symbols of Support: Defining the MyCrossCanada.ca Identity",
+        excerpt: "When a brand must communicate both urgency and compassion, every decision carries weight.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "engineering-hospitality-dragons-inn-erp",
+        category: "Code & Architecture",
+        title: "Engineering Hospitality: Building a Restaurant ERP",
+        excerpt: "How we replaced five disconnected tools with a unified restaurant management platform.",
+        readTime: "10 min read",
+      },
+    ],
+  },
+
+  // ─── Post 8: RV Properties ────────────────────────────────────────────────
+  {
+    slug: "premium-property-identity-rvproperties",
+    category: "Brand Theory",
+    categorySlug: "branding",
+    capabilityHref: "/capabilities/branding",
+    capabilityLabel: "Branding & Identity",
+    headline:
+      "Building a Premium Property Brand: The RV Properties Visual Identity",
+    byline: {
+      date: "March 2, 2026",
+      author: "Zenn Creative",
+    },
+    excerpt:
+      "How we built a real estate brand that communicates trust, premium positioning, and market authority through cohesive visual design.",
+    readTime: "7 min read",
+    intro: {
+      heading: "Real Estate Branding Beyond the Sold Sign",
+      paragraphs: [
+        "In real estate, your brand is your reputation made visual. Buyers and sellers make trust decisions based on the perceived quality of your marketing before they ever speak to an agent. RV Properties needed a brand identity that communicated premium service quality, market expertise, and the confidence that comes with years of experience — all in a single glance.",
+        "The challenge was creating a visual system that works across property listings, social media, print collateral, signage, and digital platforms while maintaining consistency and premium feel at every touchpoint.",
+      ],
+    },
+    deepDive: {
+      heading: "Designing Trust at Every Touchpoint",
+      sections: [
+        {
+          h2: "The Mark and Its Architecture",
+          paragraphs: [
+            "The RV Properties logo was designed to feel established and permanent. We chose a geometric sans-serif lettermark paired with a subtle property silhouette motif. The color palette — deep navy and warm gold — signals authority and luxury without alienating first-time homebuyers who might be intimidated by overly exclusive branding.",
+            "We built a comprehensive brand system that includes primary and secondary logo variations, a flexible grid system for marketing templates, and a typography hierarchy that scales from Instagram posts to billboard signage.",
+          ],
+        },
+        {
+          h2: "Photography Direction",
+          paragraphs: [
+            "Real estate photography is often treated as documentation — wide angles and bright lights. We approached RV Properties' photography as brand storytelling. Each property shoot follows a consistent lighting direction, color temperature, and composition framework that makes every listing feel like it belongs to the same curated portfolio, regardless of the property's price point.",
+            "Lifestyle shots of neighborhoods, local amenities, and community spaces supplement the property photography, giving potential buyers a sense of the life they're investing in — not just the structure.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "RV Properties",
+      clientSlug: "rvproperties",
+      body: "The RV Properties brand system shipped with a comprehensive Brand Standards guide, marketing template library, and photography direction framework. The cohesive visual identity elevated the brand's market perception and provided a scalable system for consistent marketing across all channels.",
+      metrics: [
+        { label: "Templates", value: "25+" },
+        { label: "Brand Assets", value: "60+" },
+        { label: "Consistency", value: "100%" },
+      ],
+    },
+    related: [
+      {
+        slug: "symbols-of-support-mycrosscanada-identity",
+        category: "Brand Theory",
+        title: "Symbols of Support: Defining the MyCrossCanada.ca Identity",
+        excerpt: "When a brand must communicate both urgency and compassion, every design decision carries weight.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "luxury-in-every-frame-purelixr-photography",
+        category: "Production Logic",
+        title: "Luxury in Every Frame: Crafting the Purelixr Brand Through Photography",
+        excerpt: "How cinematic product photography became the foundation of a perfume brand's identity.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "nextjs-speed-of-trust-montax",
+        category: "Code & Architecture",
+        title: "Next.js and the Speed of Trust: Engineering a Financial Platform",
+        excerpt: "How server components and edge functions create a premium user experience.",
+        readTime: "12 min read",
+      },
+    ],
+  },
+
+  // ─── Post 9: BC AWE ───────────────────────────────────────────────────────
+  {
+    slug: "purpose-driven-tech-bcawe-governance",
+    category: "Code & Architecture",
+    categorySlug: "software",
+    capabilityHref: "/capabilities/software",
+    capabilityLabel: "Software Development",
+    headline:
+      "Purpose-Driven Technology: Building the BC AWE Governance Portal",
+    byline: {
+      date: "February 10, 2026",
+      author: "Zenn Engineering",
+    },
+    excerpt:
+      "How we designed a governance platform for indigenous communities in British Columbia with cultural sensitivity at its architectural core.",
+    readTime: "8 min read",
+    intro: {
+      heading: "Technology in Service of Community",
+      paragraphs: [
+        "BC AWE (British Columbia Association for Wellness and Education) required a governance platform that respected the complexity of indigenous community structures while providing the administrative efficiency of modern software. This wasn't a standard SaaS build — it was a project where cultural sensitivity had to be embedded into every UX decision, database schema, and workflow design.",
+        "The platform needed to manage governance processes, community communications, and documentation in a way that aligned with existing decision-making frameworks rather than imposing corporate software conventions.",
+      ],
+    },
+    deepDive: {
+      heading: "Architecture with Cultural Intelligence",
+      sections: [
+        {
+          h2: "Governance Workflows That Respect Tradition",
+          paragraphs: [
+            "We began with extensive stakeholder consultations to understand the governance structures we were digitizing. The platform's workflow engine was designed to be configurable — not prescriptive. Community administrators can define their own approval chains, notification rules, and documentation requirements without developer intervention.",
+            "This flexibility was non-negotiable: a platform that forces communities into a rigid workflow would undermine the very governance structures it was meant to support.",
+          ],
+        },
+        {
+          h2: "Accessible Design for Diverse Users",
+          paragraphs: [
+            "The platform serves users ranging from tech-savvy administrators to elders who primarily interact with technology through mobile devices. We designed a dual-interface approach: a full-featured administration dashboard for governance coordinators, and a simplified mobile-first portal for community members that prioritizes readability, clear navigation, and minimal cognitive load.",
+            "All interfaces meet WCAG 2.2 AAA standards, with particular attention to color contrast, font sizing, and screen reader compatibility.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "BC AWE",
+      clientSlug: "bcawe",
+      body: "The BC AWE governance portal serves indigenous communities in British Columbia with a platform that respects traditional governance structures while providing modern administrative efficiency. The system handles document management, community communications, and governance workflows in a culturally sensitive, fully accessible digital environment.",
+      metrics: [
+        { label: "Accessibility", value: "AAA" },
+        { label: "Workflows", value: "Custom" },
+        { label: "Mobile-First", value: "Yes" },
+      ],
+    },
+    related: [
+      {
+        slug: "nextjs-speed-of-trust-montax",
+        category: "Code & Architecture",
+        title: "Next.js and the Speed of Trust: Engineering a Financial Platform",
+        excerpt: "How server components and edge delivery create trust through performance.",
+        readTime: "12 min read",
+      },
+      {
+        slug: "symbols-of-support-mycrosscanada-identity",
+        category: "Brand Theory",
+        title: "Symbols of Support: Defining the MyCrossCanada.ca Identity",
+        excerpt: "When a brand must hold urgency and warmth simultaneously.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "engineering-hospitality-dragons-inn-erp",
+        category: "Code & Architecture",
+        title: "Engineering Hospitality: Building a Restaurant ERP",
+        excerpt: "How we replaced five disconnected tools with a unified management platform.",
+        readTime: "10 min read",
+      },
+    ],
+  },
+
+  // ─── Post 10: D'Curries ───────────────────────────────────────────────────
+  {
+    slug: "vibrant-cuisine-dcurries-visual-identity",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Vibrant Cuisine: Capturing the Visual Identity of D'Curries",
+    byline: {
+      date: "January 25, 2026",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "How we used photography and visual storytelling to capture the vibrancy and authenticity of South Asian cuisine for a growing food brand.",
+    readTime: "7 min read",
+    intro: {
+      heading: "Color as Flavour",
+      paragraphs: [
+        "South Asian cuisine is inherently photogenic — the turmeric golds, chili reds, coriander greens, and yogurt whites create a natural color palette that demands expert handling to translate authentically to screen. D'Curries needed photography that celebrated this vibrancy without falling into the oversaturated, inauthentic look that plagues most food brand photography.",
+        "The goal was authenticity with elevation: the food should look exactly as it does in the kitchen, but presented with the care and intention that communicates brand quality.",
+      ],
+    },
+    deepDive: {
+      heading: "Authentic Food Photography at Scale",
+      sections: [
+        {
+          h2: "Working with Natural Color Palettes",
+          paragraphs: [
+            "We developed a custom color grading approach for D'Curries that enhances the existing vibrancy of the food without adding artificial saturation. The technique involves selective color work: lifting warmth in the curry tones while maintaining natural skin tones and neutral backgrounds. This creates a consistent visual signature where the food is always the most vibrant element in the frame.",
+            "Every dish was styled by the D'Curries kitchen team, not a food stylist. This was a deliberate choice — the photography shows exactly what a customer will receive, building trust through visual honesty.",
+          ],
+        },
+        {
+          h2: "Menu System Photography",
+          paragraphs: [
+            "Beyond hero shots for social media and marketing, we produced a systematic menu photography library. Every dish on the D'Curries menu was shot from a consistent angle, with consistent lighting, and at a consistent scale — creating a visual menu system that works across print menus, the website, and delivery platforms.",
+            "This systematic approach means new dishes can be photographed to match the existing library without reshooting the entire menu — a scalability consideration that most food brands overlook.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "D'Curries",
+      clientSlug: "dcurries",
+      body: "The D'Curries photography project produced a comprehensive visual library covering every menu item, brand lifestyle shots, and social media content assets. The systematic approach enables ongoing content creation that maintains visual consistency as the menu evolves.",
+      metrics: [
+        { label: "Menu Items Shot", value: "45+" },
+        { label: "Shoot Days", value: "2" },
+        { label: "Content Pieces", value: "150+" },
+      ],
+    },
+    related: [
+      {
+        slug: "color-grading-fine-dining-media",
+        category: "Production Logic",
+        title: "Color Grading the Experience: The Art of Fine Dining Media",
+        excerpt: "How post-production decisions shape appetite and brand perception.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "luxury-in-every-frame-purelixr-photography",
+        category: "Production Logic",
+        title: "Luxury in Every Frame: Crafting the Purelixr Brand Through Photography",
+        excerpt: "How cinematic product photography became the foundation of a brand's identity.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "24-hour-turns-high-velocity-retail-video",
+        category: "Social Velocity",
+        title: "24-Hour Turns: Mastering High-Velocity Video for Retail",
+        excerpt: "The content system and production workflow that lets a retail brand post daily.",
+        readTime: "9 min read",
+      },
+    ],
+  },
+
+  // ─── Post 11: CCS ─────────────────────────────────────────────────────────
+  {
+    slug: "authority-through-identity-ccs-branding",
+    category: "Brand Theory",
+    categorySlug: "branding",
+    capabilityHref: "/capabilities/branding",
+    capabilityLabel: "Branding & Identity",
+    headline:
+      "Authority Through Identity: Building the CCS Consulting Brand",
+    byline: {
+      date: "January 8, 2026",
+      author: "Zenn Creative",
+    },
+    excerpt:
+      "How we designed a professional services brand that communicates expertise and authority through cohesive visual identity and strategic photography.",
+    readTime: "6 min read",
+    intro: {
+      heading: "When Your Brand Is Your Credential",
+      paragraphs: [
+        "For a consulting firm, the brand isn't decoration — it's a credential. Before a potential client reads a proposal or attends a meeting, they've already formed an opinion based on the visual quality of the website, business cards, and presentation materials. CCS needed a brand identity that immediately communicated professional authority, cross-industry expertise, and the kind of polish that justifies premium consulting rates.",
+        "The previous visual identity was fragmented: different fonts across documents, inconsistent color usage, and photography that ranged from stock images to smartphone shots. The rebrand needed to unify everything under a single, authoritative visual system.",
+      ],
+    },
+    deepDive: {
+      heading: "Designing Professional Authority",
+      sections: [
+        {
+          h2: "The Visual System",
+          paragraphs: [
+            "We designed CCS's brand around a minimal, structured aesthetic: a crisp geometric logo, a restrained color palette of charcoal and steel blue with a single accent color, and a typographic system built on a single typeface family in three weights. The constraint is intentional — consulting brands that use too many visual elements undermine the very precision they're selling.",
+            "Every brand asset — from email signatures to proposal cover pages — follows a modular grid system that ensures visual consistency without requiring design expertise from the consulting team.",
+          ],
+        },
+        {
+          h2: "Professional Photography",
+          paragraphs: [
+            "We conducted a professional headshot and workspace photography session for the CCS team. The headshots follow a consistent style: neutral background, controlled lighting, and professional attire with natural expressions. These images appear across the website, LinkedIn profiles, and proposal documents, creating a unified team presence that reinforces the brand's professional authority.",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "CCS",
+      clientSlug: "ccs",
+      body: "The CCS brand system delivered a complete visual identity overhaul: logo suite, color system, typography, templates, and professional photography. The unified brand presence elevated the firm's market positioning and provided the team with self-service tools for consistent marketing output.",
+      metrics: [
+        { label: "Brand Assets", value: "40+" },
+        { label: "Templates", value: "15" },
+        { label: "Consistency", value: "100%" },
+      ],
+    },
+    related: [
+      {
+        slug: "symbols-of-support-mycrosscanada-identity",
+        category: "Brand Theory",
+        title: "Symbols of Support: Defining the MyCrossCanada.ca Identity",
+        excerpt: "When a brand must communicate both urgency and compassion.",
+        readTime: "8 min read",
+      },
+      {
+        slug: "premium-property-identity-rvproperties",
+        category: "Brand Theory",
+        title: "Building a Premium Property Brand: RV Properties",
+        excerpt: "How we built a real estate brand that communicates trust and premium positioning.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "color-grading-fine-dining-media",
+        category: "Production Logic",
+        title: "Color Grading the Experience: The Art of Fine Dining Media",
+        excerpt: "The post-production philosophy that makes restaurant photography feel alive.",
+        readTime: "7 min read",
+      },
+    ],
+  },
+
+  // ─── Post 12: Another World ───────────────────────────────────────────────
+  {
+    slug: "behind-the-lens-another-world-production",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Behind the Lens: The Cinematic Production of Another World",
+    byline: {
+      date: "December 20, 2025",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "A behind-the-scenes look at the creative direction, production design, and post-production workflow behind our most cinematic event production.",
+    readTime: "8 min read",
+    intro: {
+      heading: "When Events Become Cinema",
+      paragraphs: [
+        "Another World wasn't a typical event videography project. The client wanted a cinematic experience film — not a documentation video, but a piece that captured the feeling of attending the event and amplified it to something unforgettable. The brief was to make viewers who weren't there feel like they missed something extraordinary, and to make attendees feel like their experience was even more special than they remembered.",
+        "This required us to approach event coverage with the tools and mindset of narrative filmmaking: planned camera movements, intentional lighting, live audio mixing, and a post-production pipeline that treated every frame as part of a story.",
+      ],
+    },
+    deepDive: {
+      heading: "Cinematic Event Production",
+      sections: [
+        {
+          h2: "Multi-Camera Live Direction",
+          paragraphs: [
+            "We deployed a three-camera setup: a locked-off wide establishing shot on a gimbal rail, a roaming shoulder-mounted camera for intimate moments and reactions, and a dedicated detail camera for macro shots of food, decorations, and hands. Each camera operator was briefed with a shot list organized by event timeline, ensuring comprehensive coverage without the chaotic look of multiple uncoordinated cameras.",
+            "The live director communicated with all three operators via wireless comms, calling shots in real-time as the event unfolded. This allowed us to ensure we captured key moments from multiple angles simultaneously — something that cannot be recreated in post-production.",
+          ],
+        },
+        {
+          h2: "Post-Production as Storytelling",
+          h3: "From 8 Hours of Footage to 4 Minutes of Cinema",
+          paragraphs: [
+            "The edit was the story. From over eight hours of raw footage across three cameras, we distilled the event into a four-minute cinematic piece that follows an emotional arc: anticipation, arrival, celebration, and reflection. The music bed was selected before editing began, and every cut, transition, and speed ramp was choreographed to the score.",
+            "Color grading followed our event-specific LUT approach: warm highlights to simulate candlelight ambiance, cooled shadows for depth, and a subtle film grain overlay that adds texture without competing with the imagery. The final film feels timeless — it could have been shot yesterday or a decade from now.",
+          ],
+          diagramSteps: [
+            "Pre-production — shot lists, camera assignments, event timeline",
+            "3-camera live shoot with wireless director comms",
+            "Selects review — identify hero moments across all angles",
+            "Story edit — build emotional arc against music bed",
+            "Color grade — event-specific LUT with film grain",
+            "Audio mix — ambient sound blend with score",
+            "Final delivery — 4K master, social cuts (16:9, 9:16, 1:1)",
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Another World Events",
+      clientSlug: "anotherworld",
+      body: "The Another World event film was delivered in multiple formats: a 4-minute hero film, three 30-second social teasers, a vertical Instagram Reel cut, and a behind-the-scenes montage. The cinematic approach elevated event videography beyond documentation into genuine brand filmmaking, setting a new standard for the client's future event marketing.",
+      metrics: [
+        { label: "Raw Footage", value: "8+ hrs" },
+        { label: "Final Deliverables", value: "7" },
+        { label: "Cameras", value: "3" },
+      ],
+    },
+    related: [
+      {
+        slug: "color-grading-fine-dining-media",
+        category: "Production Logic",
+        title: "Color Grading the Experience: The Art of Fine Dining Media",
+        excerpt: "How post-production decisions shape atmosphere and brand perception.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "24-hour-turns-high-velocity-retail-video",
+        category: "Social Velocity",
+        title: "24-Hour Turns: Mastering High-Velocity Video for Retail",
+        excerpt: "The content system and production workflow that lets a retail brand post daily.",
+        readTime: "9 min read",
+      },
+      {
+        slug: "luxury-in-every-frame-purelixr-photography",
+        category: "Production Logic",
+        title: "Luxury in Every Frame: Crafting the Purelixr Brand Through Photography",
+        excerpt: "How cinematic product photography became the foundation of a brand's identity.",
+        readTime: "8 min read",
+      },
+    ],
+  },
+
+  // ─── Post 13: Annam Gender Reveal Story ───────────────────────────────────
+  {
+    slug: "annam-gender-reveal-celebration",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Capturing Joy: The Visual Storytelling Behind Annam's Gender Reveal Celebration",
+    byline: {
+      date: "June 14, 2026",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "A narrative breakdown of event photography production for Annam's family gender reveal — weaving decor styling, high-speed burst reveals, and golden hour family portraiture.",
+    readTime: "7 min read",
+    intro: {
+      heading: "Every Reveal Tells a Story",
+      paragraphs: [
+        "Gender reveals are raw emotional inflection points. Family, friends, and parents-to-be gather for a single moment of genuine surprise. When Annam approached Zenn Studios to photograph her family's celebration, our directive was to capture not just the confetti release, but the anticipation, tears of joy, and quiet unscripted reactions surrounding it.",
+        "Rather than treating the event as isolated photos, we structured our coverage into three narrative chapters.",
+      ],
+    },
+    deepDive: {
+      heading: "Chapter-by-Chapter Photo Narrative",
+      sections: [
+        {
+          h2: "Chapter I: Arrival, Decor & Anticipation",
+          paragraphs: [
+            "We began by documenting the party environment before guests arrived — capturing the custom balloon arches, expectation voting boards, and arrival smiles under soft natural daylight. Using a 35mm f/1.4 prime lens allowed us to separate guests naturally from backgrounds while rendering ambient lighting warmly.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-annam/1.JPG", alt: "Annam Gender Reveal Celebration Decor", caption: "Venue Styling & Reveal Setup" },
+            { src: "/images/photography/gender-reveal-annam/2.JPG", alt: "Annam Couple Milestone Portrait", caption: "Parent-to-Be Milestone Portrait" },
+            { src: "/images/photography/gender-reveal-annam/3.JPG", alt: "Family Expectations Board", caption: "Interactive Guest Voting Station" },
+            { src: "/images/photography/gender-reveal-annam/4.JPG", alt: "Guest Arrival Moments", caption: "Family & Friends Arrival" },
+          ],
+        },
+        {
+          h2: "Chapter II: The Confetti Burst & Unscripted Emotion",
+          paragraphs: [
+            "The reveal moment itself occurs in less than two seconds. We locked exposure manually at 1/2000s shutter speed and 14fps continuous mechanical burst mode. This captured the exact micro-frame where the pink and blue cannons discharged, freezing individual falling confetti particles while maintaining crisp facial focus on Annam and her partner.",
+            "Simultaneously, a secondary shooter focused on parents and grandparents, capturing their unscripted facial reactions.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-annam/5.JPG", alt: "Confetti Cannon Burst Moment", caption: "The Climax Reveal Burst" },
+            { src: "/images/photography/gender-reveal-annam/6.JPG", alt: "Emotional Reaction Shot", caption: "Unscripted Family Tears of Joy" },
+            { src: "/images/photography/gender-reveal-annam/7.JPG", alt: "Couple Embrace After Reveal", caption: "Post-Reveal Celebration" },
+            { src: "/images/photography/gender-reveal-annam/8.JPG", alt: "Grandparents Reacting", caption: "Multi-Generational Joy" },
+          ],
+        },
+        {
+          h2: "Chapter III: Sunset Portraits, Treats & Finale",
+          paragraphs: [
+            "Following the high-energy reveal, the mood transitioned to warm celebration. We documented cake cutting, multi-generational hugs, and outdoor golden hour portraits that complete Annam's keepsake album.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-annam/9.JPG", alt: "Cake Cutting & Treats", caption: "Custom Dessert Table Styling" },
+            { src: "/images/photography/gender-reveal-annam/10.JPG", alt: "Outdoor Couple Session", caption: "Golden Hour Couple Portrait" },
+            { src: "/images/photography/gender-reveal-annam/11.JPG", alt: "Family Group Gathering", caption: "Complete Celebration Attendees" },
+            { src: "/images/photography/gender-reveal-annam/12.JPG", alt: "Finale Farewell Toast", caption: "Evening Celebration Finale" },
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Annam",
+      clientSlug: "photography",
+      body: "Delivered over 120 retouched, full-resolution event photographs documenting Annam's gender reveal celebration. The images were formatted for both high-resolution print keepsakes and digital social sharing.",
+      metrics: [
+        { label: "Delivered Photos", value: "120+" },
+        { label: "Burst Speed", value: "14 fps" },
+        { label: "Client Rating", value: "5/5" },
+      ],
+    },
+    related: [
+      {
+        slug: "manisha-gender-reveal-event",
+        category: "Production Logic",
+        title: "Moments That Matter: Inside Manisha's Family Gender Reveal Party",
+        excerpt: "Inside the 15-photo portrait narrative captured for Manisha's celebration.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "windsor-tamil-community-chariot-festival",
+        category: "Production Logic",
+        title: "Sacred Rhythms & Sacred Colors: Documenting Windsor’s Tamil Chariot Festival",
+        excerpt: "Visual story of the Murugan Ther Thiruvizha chariot procession.",
+        readTime: "8 min read",
+      },
+    ],
+  },
+
+  // ─── Post 14: Manisha Gender Reveal Story ─────────────────────────────────
+  {
+    slug: "manisha-gender-reveal-event",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Moments That Matter: Inside Manisha's Family Gender Reveal Party",
+    byline: {
+      date: "May 29, 2026",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "A 15-photo documentary coverage breakdown capturing the warmth, interactive games, and multi-generational joy of Manisha's gender reveal event.",
+    readTime: "7 min read",
+    intro: {
+      heading: "Warmth, Culture, and Celebration",
+      paragraphs: [
+        "Manisha's gender reveal party brought together over 25 family members for an afternoon of games, emotional reveals, and candid portraits. Our photography approach focused on vibrant warm color rendering, soft natural fill light, and continuous candid capture throughout the event timeline.",
+        "Below is the complete story told across three distinct chapters.",
+      ],
+    },
+    deepDive: {
+      heading: "Chapter-by-Chapter Photo Narrative",
+      sections: [
+        {
+          h2: "Chapter I: Welcome, Decor & Family Arrivals",
+          paragraphs: [
+            "We documented the party environment before guests arrived — capturing custom balloon arches, prediction voting boards, and initial family welcomes under soft diffused daylight.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-manisha/1.jpg", alt: "Manisha Gender Reveal Decor", caption: "Balloon Arch & Party Entrance" },
+            { src: "/images/photography/gender-reveal-manisha/2.jpg", alt: "Manisha Family Portrait", caption: "Family Welcome Portrait" },
+            { src: "/images/photography/gender-reveal-manisha/3.jpg", alt: "Voting Game Table", caption: "Boy or Girl Prediction Board" },
+            { src: "/images/photography/gender-reveal-manisha/4.jpg", alt: "Guests Arriving & Laughing", caption: "Candid Family Arrival" },
+            { src: "/images/photography/gender-reveal-manisha/5.jpg", alt: "Party Host Opening Speech", caption: "Opening Remarks & Expectations" },
+          ],
+        },
+        {
+          h2: "Chapter II: The Powder Burst & Emotional Climax",
+          paragraphs: [
+            "During the powder cannon blast, we locked exposure and captured the explosion of color alongside cheering family members and emotional hugs.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-manisha/6.jpg", alt: "The Cannon Powder Blast", caption: "Confetti Powder Cannon Blast" },
+            { src: "/images/photography/gender-reveal-manisha/7.jpg", alt: "Couple Cheering", caption: "The Joyful Reveal Moment" },
+            { src: "/images/photography/gender-reveal-manisha/8.jpg", alt: "Parents Embracing", caption: "Emotional Celebration Hug" },
+            { src: "/images/photography/gender-reveal-manisha/9.jpg", alt: "Grandparents Smiles", caption: "Grandparents Celebrating" },
+          ],
+        },
+        {
+          h2: "Chapter III: Desserts, Games & The 25-Person Family Album",
+          paragraphs: [
+            "The event concluded with custom cupcakes, interactive trivia games, and a full 25-person family portrait in the evening light.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/gender-reveal-manisha/10.jpg", alt: "Dessert Table Details", caption: "Custom Cupcakes & Cake Detail" },
+            { src: "/images/photography/gender-reveal-manisha/11.jpg", alt: "Group Photo of Guests", caption: "Full Party Attendees Portrait" },
+            { src: "/images/photography/gender-reveal-manisha/12.jpg", alt: "Kids Playing at Party", caption: "Younger Generation Smiles" },
+            { src: "/images/photography/gender-reveal-manisha/13.jpg", alt: "Couple Holding Signs", caption: "Milestone Keepsake Pose" },
+            { src: "/images/photography/gender-reveal-manisha/14.jpg", alt: "Candid Laughter Beat", caption: "Family Laughter & Cheer" },
+            { src: "/images/photography/gender-reveal-manisha/15.jpg", alt: "Sunset Group Finale", caption: "Celebration Finale Group Shot" },
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Manisha",
+      clientSlug: "photography",
+      body: "Delivered 150+ color-graded photographs documenting the entire party timeline, from initial guest arrival through the celebratory finale.",
+      metrics: [
+        { label: "Album Photos", value: "150+" },
+        { label: "Hero Shots", value: "15" },
+        { label: "Turnaround", value: "48 hrs" },
+      ],
+    },
+    related: [
+      {
+        slug: "annam-gender-reveal-celebration",
+        category: "Production Logic",
+        title: "Capturing Joy: The Visual Storytelling Behind Annam's Gender Reveal",
+        excerpt: "Inside the 12-photo story arc captured for Annam's reveal.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "windsor-tamil-community-chariot-festival",
+        category: "Production Logic",
+        title: "Sacred Rhythms & Sacred Colors: Documenting Windsor’s Tamil Chariot Festival",
+        excerpt: "Visual story of the Murugan Ther Thiruvizha chariot procession.",
+        readTime: "8 min read",
+      },
+    ],
+  },
+
+  // ─── Post 15: Windsor Tamil Community Chariot Festival ────────────────────
+  {
+    slug: "windsor-tamil-community-chariot-festival",
+    category: "Production Logic",
+    categorySlug: "editorial",
+    capabilityHref: "/capabilities/editorial",
+    capabilityLabel: "Photography & Production",
+    headline:
+      "Sacred Rhythms & Sacred Colors: Documenting Windsor's Tamil Chariot Festival",
+    byline: {
+      date: "June 14, 2026",
+      author: "Zenn Production",
+    },
+    excerpt:
+      "On Sunday, June 14, 2026, the Hindu Temple and Cultural Centre of Windsor erupted in color and devotion for Murugan Ther Thiruvizha. Here is the visual story of the chariot procession.",
+    readTime: "8 min read",
+    intro: {
+      heading: "A Sacred Tradition in the Heart of Windsor",
+      paragraphs: [
+        "On Sunday, June 14, 2026, the local Tamil community gathered at the Hindu Temple and Cultural Centre of Windsor for the sacred Murugan Ther Thiruvizha (Chariot Festival). The festival venerates Lord Murugan — the Tamil deity of war, youth, courage, and wisdom.",
+        "Colorfully dressed dancers of all ages, traditional musicians playing nadaswaram and thavil, and hundreds of devotees filled the temple grounds with vibrant energy. Zenn Production was on site to document the day in a narrative photojournalistic story.",
+      ],
+    },
+    deepDive: {
+      heading: "The Chariot Festival Story Arc",
+      sections: [
+        {
+          h2: "I. Morning Gathering & Sacred Preparations",
+          paragraphs: [
+            "As morning sunlight broke over the Hindu Temple and Cultural Centre of Windsor, devotees arrived in traditional silk attire. The temple priests conducted preliminary pujas inside the sanctum before bringing the deity of Lord Murugan to the grand wooden chariot.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/community/1.JPG", alt: "Windsor Tamil Community Morning Gathering", caption: "Morning Devotions & Temple Arrival" },
+            { src: "/images/photography/community/2.JPG", alt: "Sacred Altar Preparations", caption: "Pujas & Garland Decor Setup" },
+          ],
+        },
+        {
+          h2: "II. Dancers of All Ages & Traditional Rhythms",
+          paragraphs: [
+            "A cornerstone of the Ther Thiruvizha is the cultural dance performances. Colorfully dressed dancers of all ages — from young children in silk pavadais to adult artists — performed sacred devotional routines to the reverberating rhythms of thavil drums.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/community/3.JPG", alt: "Traditional Tamil Dancers", caption: "Colorfully Dressed Dancers Performing" },
+            { src: "/images/photography/community/4.JPG", alt: "Young Dancers on Temple Grounds", caption: "Youth Performances at Windsor Temple" },
+            { src: "/images/photography/community/5.JPG", alt: "Musicians Playing Nadaswaram & Thavil", caption: "Traditional Musician Ensemble" },
+          ],
+        },
+        {
+          h2: "III. Pulling the Sacred Chariot (Ther Procession)",
+          paragraphs: [
+            "The climax of the festival is the pulling of the Ther. Devotees grab thick coconut fiber ropes and pull the towering wooden chariot around the temple grounds, chanting 'Vetrivel Muruganukku Harohara!' in unison as incense smoke fills the summer air.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/community/6.JPG", alt: "Devotees Pulling the Sacred Chariot Ropes", caption: "Devotees Pulling the Wooden Chariot Ropes" },
+            { src: "/images/photography/community/7.JPG", alt: "Chariot Moving Around Windsor Temple", caption: "Ther Procession Around Temple Grounds" },
+            { src: "/images/photography/community/8.JPG", alt: "Offerings of Flowers & Coconuts", caption: "Devotional Offerings at Chariot Base" },
+          ],
+        },
+        {
+          h2: "IV. Community Fellowship & Prasadam Feast",
+          paragraphs: [
+            "After the chariot completed its circumambulation, the celebration transitioned to Annadhanam (community feast). Multi-generational families shared traditional South Indian meals, celebrating cultural heritage and community unity in Windsor.",
+          ],
+          imageGrid: [
+            { src: "/images/photography/community/9.JPG", alt: "Annadhanam Community Meal Gathering", caption: "Sharing Traditional Prasadam Feast" },
+            { src: "/images/photography/community/10.JPG", alt: "Multi-Generational Family Smiles", caption: "Multi-Generational Community Joy" },
+            { src: "/images/photography/community/11.JPG", alt: "Festival Finale Group Portrait", caption: "Windsor Tamil Community Chariot Festival Finale" },
+          ],
+        },
+      ],
+    },
+    proof: {
+      heading: "Putting the Logic into Practice.",
+      client: "Windsor Tamil Community",
+      clientSlug: "photography",
+      body: "Documented the complete 2026 Murugan Ther Thiruvizha festival at the Hindu Temple and Cultural Centre of Windsor, producing an 11-photo narrative archive for community records and local media coverage.",
+      metrics: [
+        { label: "Event Date", value: "June 14, 2026" },
+        { label: "Community Attendance", value: "500+" },
+        { label: "Photo Archive", value: "11 Stories" },
+      ],
+    },
+    related: [
+      {
+        slug: "annam-gender-reveal-celebration",
+        category: "Production Logic",
+        title: "Capturing Joy: The Visual Storytelling Behind Annam's Gender Reveal",
+        excerpt: "Inside the narrative story arc captured for Annam's reveal.",
+        readTime: "7 min read",
+      },
+      {
+        slug: "manisha-gender-reveal-event",
+        category: "Production Logic",
+        title: "Moments That Matter: Inside Manisha's Family Gender Reveal Party",
+        excerpt: "Inside the 15-photo portrait narrative captured for Manisha's celebration.",
         readTime: "7 min read",
       },
     ],

@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, Calendar, Clock, User } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
+import { getPostBySlug, getAllSlugs } from "../blogData";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
-import { ArrowLeft, ArrowRight, Calendar, Clock, User } from "lucide-react";
-import FadeIn from "@/components/FadeIn";
-import { getPostBySlug, getAllSlugs } from "../blogData";
 
 // ── Static Generation ──────────────────────────────────────────────────────────
 export async function generateStaticParams() {
@@ -27,10 +29,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 // ── Category Badge Colors ──────────────────────────────────────────────────────
 const categoryColors: Record<string, string> = {
-  "Code & Architecture": "from-blue-600/20 to-blue-500/5 text-blue-400 border-blue-500/30",
-  "Brand Theory": "from-violet-600/20 to-violet-500/5 text-violet-400 border-violet-500/30",
-  "Production Logic": "from-amber-600/20 to-amber-500/5 text-amber-400 border-amber-500/30",
-  "Social Velocity": "from-emerald-600/20 to-emerald-500/5 text-emerald-400 border-emerald-500/30",
+  Software: "from-blue-600/20 to-blue-500/5 text-blue-400 border-blue-500/30",
+  Website: "from-emerald-600/20 to-emerald-500/5 text-emerald-400 border-emerald-500/30",
+  Branding: "from-violet-600/20 to-violet-500/5 text-violet-400 border-violet-500/30",
+  Photography: "from-amber-600/20 to-amber-500/5 text-amber-400 border-amber-500/30",
+  Production: "from-red-600/20 to-red-500/5 text-brand-primary border-brand-primary/30",
+  "Graphics design": "from-purple-600/20 to-purple-500/5 text-purple-400 border-purple-500/30",
 };
 
 function CategoryBadge({ category }: { category: string }) {
@@ -142,23 +146,20 @@ export default async function BlogPostPage(props: PageProps) {
             </div>
           </FadeIn>
 
-          {/* Featured Image — Antigravity stylized placeholder */}
+          {/* Featured Image — Real Generated Visual Banner */}
           <FadeIn delay={0.2} className="mt-14">
-            <div className="w-full aspect-[16/7] rounded-3xl overflow-hidden relative border border-zinc-800 shadow-[0_0_60px_rgba(182,51,46,0.08),_0_0_0_1px_rgba(255,255,255,0.03)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black" />
-              {/* Inner glow grid */}
-              <div className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-                  backgroundSize: "60px 60px"
-                }}
+            <div className="w-full aspect-[21/9] rounded-3xl overflow-hidden relative border border-zinc-800 shadow-[0_0_60px_rgba(182,51,46,0.12),_0_0_0_1px_rgba(255,255,255,0.03)] bg-zinc-950">
+              <Image
+                src="/images/hero/architectural-concept.png"
+                alt={post.headline}
+                fill
+                className="object-cover"
+                priority
+                quality={90}
               />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(182,51,46,0.12),_transparent_60%)]" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 z-10">
                 <CategoryBadge category={post.category} />
-                <p className="text-zinc-600 font-mono text-xs uppercase tracking-widest">
-                  Featured Visual — {post.byline.date}
-                </p>
               </div>
             </div>
           </FadeIn>
@@ -245,10 +246,75 @@ export default async function BlogPostPage(props: PageProps) {
                   {section.diagramSteps && (
                     <WorkflowDiagram steps={section.diagramSteps} />
                   )}
+
+                  {section.imageGrid && section.imageGrid.length > 0 && (
+                    <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {section.imageGrid.map((img: any, k: number) => (
+                        <div
+                          key={k}
+                          className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800/80 aspect-[4/3] w-full shadow-md hover:border-brand-primary/50 transition-all duration-300"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                            quality={85}
+                          />
+                          {img.caption && (
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                              <p className="text-xs text-white font-semibold">
+                                {img.caption}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </FadeIn>
             ))}
           </div>
+
+          {/* Gallery Section if present */}
+          {post.galleryImages && post.galleryImages.length > 0 && (
+            <FadeIn delay={0.2}>
+              <div className="mt-20 pt-16 border-t border-zinc-900">
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-2xl font-bold text-white tracking-tight">
+                    Curated Photo Collection
+                  </h3>
+                  <span className="text-xs font-mono text-brand-primary uppercase tracking-widest bg-brand-primary/10 border border-brand-primary/30 px-3 py-1 rounded-full">
+                    {post.galleryImages.length} High-Res Deliverables
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {post.galleryImages.map((img: any, i: number) => (
+                    <div
+                      key={i}
+                      className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800/80 aspect-[3/4] w-full shadow-md hover:border-brand-primary/50 transition-all duration-300"
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                        quality={85}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p className="text-xs text-white font-semibold transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          {img.caption || img.alt}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          )}
         </div>
       </section>
 
@@ -270,11 +336,18 @@ export default async function BlogPostPage(props: PageProps) {
 
           {/* Case Study Visual */}
           <FadeIn delay={0.1}>
-            <div className="w-full aspect-[16/7] rounded-2xl glass-card overflow-hidden relative flex items-center justify-center mb-12 border border-zinc-800 shadow-[0_0_40px_rgba(182,51,46,0.06)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/50 to-zinc-950" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <span className="text-zinc-600 font-mono text-xs uppercase tracking-widest">
-                  {post.proof.client} — Project Mockup
+            <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden relative mb-12 border border-zinc-800 shadow-[0_0_40px_rgba(182,51,46,0.12)] bg-zinc-950">
+              <Image
+                src="/images/capabilities/software.png"
+                alt={`${post.proof.client} Case Study`}
+                fill
+                className="object-cover"
+                quality={85}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+              <div className="absolute bottom-4 left-6 z-10">
+                <span className="text-white font-mono text-xs uppercase tracking-widest bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-zinc-700">
+                  {post.proof.client} — Architectural Case Study
                 </span>
               </div>
             </div>

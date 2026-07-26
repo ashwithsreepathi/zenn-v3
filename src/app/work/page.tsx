@@ -1,33 +1,50 @@
 "use client";
 
 import FadeIn from "@/components/FadeIn";
-import { ArrowRight, Camera, Code2, PenTool, Share2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-const projects = [
-  { slug: "montax", title: "Montax", category: "software", tag: "Web App", desc: "Next-gen financial services platform with a client portal and document management system.", year: "2025" },
-  { slug: "mycrosscanada", title: "MyCrossCanada", category: "branding", tag: "Brand & Web", desc: "National directory platform connecting Canadians to trusted local services.", year: "2024" },
-  { slug: "rvproperties", title: "RV Properties", category: "branding", tag: "Branding", desc: "Premium real estate branding with full visual identity and digital marketing suite.", year: "2024" },
-  { slug: "bcawe", title: "BC AWE", category: "software", tag: "Web Platform", desc: "Government-adjacent governance portal for indigenous communities in British Columbia.", year: "2024" },
-  { slug: "mkfoodco", title: "MK Food Company", category: "software", tag: "ERP / Logistics", desc: "Custom wholesale inventory and distribution logistics management platform.", year: "2024" },
-  { slug: "blackfridaybins", title: "Black Friday Bins", category: "media", tag: "Media & Social", desc: "High-velocity weekly video campaigns translating to massive physical retail foot traffic.", year: "2025" },
-  { slug: "dragonsinn", title: "Dragons Inn", category: "software", tag: "Web Design", desc: "Hospitality-focused web presence with online ordering and reservation management.", year: "2024" },
-  { slug: "embersgrillehouse", title: "Embers Grille House", category: "media", tag: "Photography", desc: "Cinematic food and ambiance photography that elevated the brand's fine-dining perception.", year: "2025" },
+interface ProjectItem {
+  slug: string;
+  title: string;
+  categories: string[];
+  tag: string;
+  desc: string;
+  year: string;
+}
+
+const projects: ProjectItem[] = [
+  { slug: "montax", title: "Montax", categories: ["Website", "Software"], tag: "Website & Portal", desc: "Next-gen financial services platform with a client portal and document management system.", year: "2025" },
+  { slug: "mycrosscanada", title: "MyCrossCanada", categories: ["Website", "Branding"], tag: "Website & Logo", desc: "National directory platform connecting Canadians to trusted local services.", year: "2024" },
+  { slug: "rvproperties", title: "RV Properties", categories: ["Website", "Branding"], tag: "Website & Logo", desc: "Premium real estate branding with full visual identity and digital portal.", year: "2024" },
+  { slug: "bcawe", title: "BC AWE", categories: ["Website"], tag: "Website Portal", desc: "Government-adjacent governance portal for indigenous communities in British Columbia.", year: "2024" },
+  { slug: "mkfoodco", title: "MK Food Company", categories: ["Software"], tag: "Inventory ERP", desc: "Custom wholesale inventory and distribution logistics management platform.", year: "2024" },
+  { slug: "dragonsinn", title: "Dragons Inn", categories: ["Software"], tag: "Restaurant ERP", desc: "Hospitality-focused web presence with online ordering and POS integration.", year: "2024" },
+  { slug: "embersgrillehouse", title: "Embers Grille House", categories: ["Graphics design"], tag: "Graphic Design & Socials", desc: "Social media post graphics, print design, and visual branding for fine dining.", year: "2025" },
+  { slug: "dcurries", title: "D'Curries", categories: ["Graphics design"], tag: "Graphic Design & Socials", desc: "Social media post designs, promotional banners, and visual media branding.", year: "2025" },
+  { slug: "purelixr", title: "Purelixr", categories: ["Photography & Production"], tag: "Product Photography", desc: "Cinematic product photography and visual storytelling for a luxury perfume brand.", year: "2025" },
+  { slug: "anotherworldvr", title: "Another World VR", categories: ["Photography & Production"], tag: "Commercial Shoot", desc: "Commercial film production capturing immersive virtual reality experiences.", year: "2025" },
+  { slug: "maternitystories", title: "Maternity & Family Celebrations", categories: ["Photography & Production"], tag: "Maternity Photography", desc: "Emotional documentary coverage of family milestones and gender reveal celebrations.", year: "2026" },
+  { slug: "blackfridaybins", title: "Black Friday Bins", categories: ["Photography & Production"], tag: "Media & Social", desc: "High-velocity weekly video campaigns translating to massive retail foot traffic.", year: "2025" },
 ];
 
 const filters = [
-  { id: "all", label: "All Work", icon: null },
-  { id: "software", label: "Software", icon: Code2 },
-  { id: "branding", label: "Branding", icon: PenTool },
-  { id: "media", label: "Media", icon: Camera },
-  { id: "social", label: "Social", icon: Share2 },
+  { id: "all", label: "All Work" },
+  { id: "Software", label: "Software" },
+  { id: "Website", label: "Website" },
+  { id: "Branding", label: "Branding" },
+  { id: "Photography & Production", label: "Photography & Production" },
+  { id: "Graphics design", label: "Graphics design" },
 ];
 
 export default function WorkIndex() {
   const [active, setActive] = useState("all");
 
-  const filtered = active === "all" ? projects : projects.filter((p) => p.category === active);
+  const filtered =
+    active === "all"
+      ? projects
+      : projects.filter((p) => p.categories.includes(active));
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
@@ -63,7 +80,6 @@ export default function WorkIndex() {
                     : "bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800"
                 }`}
               >
-                {f.icon && <f.icon className="w-4 h-4" />}
                 {f.label}
               </button>
             ))}

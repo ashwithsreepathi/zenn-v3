@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
+import Navbar from "@/components/Navbar";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,32 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased bg-black text-white`}>
-        {/* ── Navbar ── */}
-        <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-zinc-900">
-          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
-            <Link
-              href="/"
-              className="text-xl font-black tracking-tighter flex-shrink-0 hover:text-brand-primary transition-colors"
-            >
-              ZENN STUDIOS
-            </Link>
-
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-              <Link href="/about" className="hover:text-white transition-colors">About</Link>
-              <Link href="/work" className="hover:text-white transition-colors">Work</Link>
-              <Link href="/capabilities" className="hover:text-white transition-colors">Capabilities</Link>
-              <Link href="/labs" className="hover:text-white transition-colors">Labs</Link>
-              <Link href="/insights" className="hover:text-white transition-colors">Insights</Link>
-            </div>
-
-            <Link
-              href="/enquiry"
-              className="bg-brand-primary hover:bg-brand-primary/80 px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(182,51,46,0.2)] hover:shadow-[0_0_30px_rgba(182,51,46,0.4)] flex-shrink-0"
-            >
-              Start a Project
-            </Link>
-          </div>
-        </nav>
+        {/* ── Responsive Navbar ── */}
+        <Navbar />
 
         {/* ── Main Content ── */}
         <main className="pt-20">{children}</main>
@@ -51,12 +29,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
               {/* Brand */}
               <div className="col-span-2 md:col-span-4 lg:col-span-1">
-                <Link href="/" className="text-2xl font-black tracking-tighter block mb-4">
-                  ZENN<br />STUDIOS
+                <Link href="/" className="flex items-center gap-3 mb-5 group">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden relative border border-zinc-800 flex-shrink-0 bg-zinc-900 shadow-md">
+                    <Image
+                      src="/images/brand/zenn-logo.jpg"
+                      alt="Zenn Studios Logo"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div>
+                    <span className="text-xl font-black tracking-tighter block leading-none">ZENN STUDIOS</span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-1 block">Boutique Agency</span>
+                  </div>
                 </Link>
-                <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
-                  Architects of the Unforgettable. Boutique agency at the intersection of technology and creativity.
+                <p className="text-zinc-500 text-sm leading-relaxed max-w-xs mb-4">
+                  Architects of the Unforgettable. Home office base serving Brantford, ON & GTA. (10:00 AM – 6:00 PM EST).
                 </p>
+                <div className="text-xs font-mono text-zinc-400 space-y-1 mb-4">
+                  <a href="mailto:ash@zennstudios.com" className="hover:text-brand-primary transition-colors block">ash@zennstudios.com</a>
+                </div>
+                <div className="flex gap-4 text-xs font-medium">
+                  <a href="https://instagram.com/zenn_stuudios_" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">Instagram</a>
+                  <a href="https://ca.linkedin.com/company/zenn-studios" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">LinkedIn</a>
+                </div>
               </div>
 
               {/* Company */}
@@ -78,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li><Link href="/capabilities/branding" className="hover:text-white transition-colors">Branding</Link></li>
                   <li><Link href="/capabilities/editorial" className="hover:text-white transition-colors">Photography & Video</Link></li>
                   <li><Link href="/capabilities/social" className="hover:text-white transition-colors">Social Media</Link></li>
+                  <li><Link href="/photography" className="hover:text-brand-primary transition-colors text-brand-primary/70">Zenn Photography →</Link></li>
                 </ul>
               </div>
 

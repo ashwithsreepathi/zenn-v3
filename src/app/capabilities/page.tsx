@@ -1,5 +1,6 @@
 import FadeIn from "@/components/FadeIn";
 import { ArrowRight, Camera, Code2, Network, PenTool, Share2, Workflow } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function CapabilitiesIndex() {
@@ -21,9 +22,21 @@ export default function CapabilitiesIndex() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.4}>
-            <div className="w-full max-w-4xl mx-auto aspect-[21/9] rounded-3xl overflow-hidden relative glass-card flex items-center justify-center">
-              <Network className="w-32 h-32 text-brand-primary opacity-20 absolute" />
-              <p className="text-zinc-600 font-mono text-sm tracking-widest uppercase z-10">Visual: 3D Interconnected Nodes Concept</p>
+            <div className="w-full max-w-4xl mx-auto aspect-[21/9] rounded-3xl overflow-hidden relative border border-zinc-800 shadow-[0_0_60px_rgba(182,51,46,0.15)] bg-zinc-950">
+              <Image
+                src="/images/capabilities/integration.png"
+                alt="The Power of Integration — Zenn Studios"
+                fill
+                className="object-cover"
+                priority
+                quality={95}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 z-10">
+                <span className="text-white font-mono text-xs uppercase tracking-widest bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-zinc-700">
+                  The Power of Integration
+                </span>
+              </div>
             </div>
           </FadeIn>
         </div>

@@ -1,56 +1,172 @@
 "use client";
 
 import FadeIn from "@/components/FadeIn";
-import { ArrowRight, Clock, Send } from "lucide-react";
+import { ArrowRight, Clock, Send, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-const categories = ["All", "Code & Architecture", "Brand Theory", "Production Logic", "Social Velocity"];
+const categories = ["All", "Software", "Website", "Branding", "Photography", "Production", "Graphics design"];
 
 const articles = [
   {
     id: 1,
-    slug: "nextjs-speed-of-trust-montax",
-    title: "Next.js and the Speed of Trust: Engineering a Financial Platform for Montax.ca",
-    category: "Code & Architecture",
-    excerpt: "How we leveraged server components and edge delivery to build a financial platform clients trust implicitly.",
-    date: "Apr 3",
-    time: "12 min",
+    slug: "engineering-hospitality-dragons-inn-erp",
+    title: "Dragons Inn — Full-Stack Restaurant ERP & Operational System",
+    category: "Software",
+    excerpt: "How we replaced five disconnected tools with a unified restaurant management ERP handling reservations, kitchen display, and POS.",
+    date: "May 12",
+    time: "10 min",
+    client: "Dragons Inn",
   },
   {
     id: 2,
-    slug: "symbols-of-support-mycrosscanada-identity",
-    title: "Symbols of Support: Defining the MyCrossCanada.ca Visual Identity",
-    category: "Brand Theory",
-    excerpt: "When a brand must communicate both urgency and compassion, every design decision carries weight.",
-    date: "Mar 18",
-    time: "8 min",
+    slug: "scaling-wholesale-mk-food-erp",
+    title: "MK Food Company — Custom Wholesale Inventory ERP Platform",
+    category: "Software",
+    excerpt: "Eliminating spreadsheet chaos and supply chain bottlenecks with a custom inventory logistics ERP.",
+    date: "Apr 28",
+    time: "9 min",
+    client: "MK Food Company",
   },
   {
     id: 3,
-    slug: "color-grading-fine-dining-media",
-    title: "Color Grading the Experience: The Art of Fine Dining Media",
-    category: "Production Logic",
-    excerpt: "How post-production decisions shape appetite, atmosphere, and brand perception in restaurant photography.",
-    date: "Feb 28",
-    time: "7 min",
+    slug: "nextjs-speed-of-trust-montax",
+    title: "Montax.ca — High-Performance Next.js Financial Website",
+    category: "Website",
+    excerpt: "How we leveraged server components and edge delivery to build a financial web platform clients trust implicitly.",
+    date: "Apr 3",
+    time: "12 min",
+    client: "Montax.ca",
   },
   {
     id: 4,
-    slug: "24-hour-turns-high-velocity-retail-video",
-    title: "24-Hour Turns: Mastering High-Velocity Video for Retail",
-    category: "Social Velocity",
-    excerpt: "Inside the content system that lets a retail brand publish daily social video at premium quality.",
+    slug: "premium-property-identity-rvproperties",
+    title: "RV Properties — Luxury Real Estate Web Platform & Logo Identity",
+    category: "Branding",
+    excerpt: "Building a high-converting property website and premium visual logo system for market leadership.",
+    date: "Mar 2",
+    time: "7 min",
+    client: "RV Properties",
+  },
+  {
+    id: 5,
+    slug: "symbols-of-support-mycrosscanada-identity",
+    title: "MyCrossCanada.ca — National Web Platform & Logo Identity System",
+    category: "Website",
+    excerpt: "Designing a nationwide community mobilization web platform and accessible visual mark.",
+    date: "Mar 18",
+    time: "8 min",
+    client: "MyCrossCanada",
+  },
+  {
+    id: 6,
+    slug: "purpose-driven-tech-bcawe-governance",
+    title: "BC AWE — Digital Governance Web Portal & Architecture",
+    category: "Website",
+    excerpt: "Designing a purpose-driven governance web platform with cultural intelligence and AAA accessibility.",
+    date: "Feb 10",
+    time: "8 min",
+    client: "BC AWE",
+  },
+  {
+    id: 7,
+    slug: "purelixr-fragrance-photography-shoot",
+    title: "Purelixr — Luxury Fragrance Product Photography Shoot",
+    category: "Photography",
+    excerpt: "Visual storytelling for a premium perfume line — capturing liquid reflection and luxury packaging.",
+    date: "Feb 24",
+    time: "6 min",
+    client: "Purelixr",
+  },
+  {
+    id: 8,
+    slug: "24-hour-turns-black-friday-bins-social",
+    title: "Black Friday Bins — High-Velocity Retail Media Campaign",
+    category: "Production",
+    excerpt: "How weekly 24-hour turnaround social video content translated into retail foot traffic.",
+    date: "Jan 19",
+    time: "7 min",
+    client: "Black Friday Bins",
+  },
+  {
+    id: 9,
+    slug: "embers-grille-house-social-branding",
+    title: "Embers Grille House — Social Media Branding & Graphic Design",
+    category: "Graphics design",
+    excerpt: "Social media post graphics and visual content strategy that drove dinner reservations.",
+    date: "Jan 12",
+    time: "5 min",
+    client: "Embers Grille House",
+  },
+  {
+    id: 10,
+    slug: "dcurries-restaurant-media-launch",
+    title: "D'Curries — Restaurant Brand Launch & Visual Production",
+    category: "Production",
+    excerpt: "Full-scale creative media coverage and launch production for an authentic Indian cuisine brand.",
     date: "Jan 15",
-    time: "9 min",
+    time: "6 min",
+    client: "D'Curries",
+  },
+  {
+    id: 11,
+    slug: "another-world-vr-commercial-shoot",
+    title: "Another World VR — Commercial Short & Virtual Reality Production",
+    category: "Production",
+    excerpt: "Commercial film production capturing immersive virtual reality experiences.",
+    date: "Jan 10",
+    time: "8 min",
+    client: "Another World VR",
+  },
+  {
+    id: 12,
+    slug: "authority-through-identity-ccs-branding",
+    title: "CCS Consulting — Corporate Web Platform & Brand Identity",
+    category: "Branding",
+    excerpt: "Designing a professional services web portal and corporate visual system that commands market authority.",
+    date: "Jan 8",
+    time: "6 min",
+    client: "CCS",
+  },
+  {
+    id: 13,
+    slug: "annam-gender-reveal-celebration",
+    title: "Annam's Gender Reveal — Celebration Story & 12-Photo Collection",
+    category: "Photography",
+    excerpt: "Visual storytelling behind Annam's gender reveal — capturing 12 hero moments from pre-reveal decor to high-speed burst confetti captures.",
+    date: "Jun 14",
+    time: "6 min",
+    client: "Annam",
+  },
+  {
+    id: 14,
+    slug: "manisha-gender-reveal-event",
+    title: "Manisha's Gender Reveal — Party Documentary & 15-Photo Story",
+    category: "Photography",
+    excerpt: "A 15-photo narrative coverage breakdown capturing the warmth, family games, and multi-generational joy of Manisha's gender reveal.",
+    date: "May 29",
+    time: "7 min",
+    client: "Manisha",
+  },
+  {
+    id: 15,
+    slug: "windsor-tamil-community-chariot-festival",
+    title: "Windsor Tamil Community — Murugan Ther Thiruvizha Chariot Festival",
+    category: "Production",
+    excerpt: "Visual story documenting Murugan Ther Thiruvizha at the Hindu Temple and Cultural Centre of Windsor on Sunday, June 14, 2026.",
+    date: "Jun 14",
+    time: "8 min",
+    client: "Windsor Tamil Community",
   },
 ];
 
 const categoryColors: Record<string, string> = {
-  "Code & Architecture": "text-blue-400",
-  "Brand Theory": "text-violet-400",
-  "Production Logic": "text-amber-400",
-  "Social Velocity": "text-emerald-400",
+  Software: "text-blue-400 border-blue-500/30 bg-blue-500/10",
+  Website: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
+  Branding: "text-violet-400 border-violet-500/30 bg-violet-500/10",
+  Photography: "text-amber-400 border-amber-500/30 bg-amber-500/10",
+  Production: "text-red-400 border-red-500/30 bg-red-500/10",
+  "Graphics design": "text-purple-400 border-purple-500/30 bg-purple-500/10",
 };
 
 export default function Insights() {
@@ -63,160 +179,100 @@ export default function Insights() {
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
-      {/* Section 1: Hero (The Authority) */}
+      {/* Section 1: Hero with Multi-line Animated Background Text Marquee */}
       <section className="pt-40 pb-20 relative overflow-hidden border-b border-zinc-900">
         <div className="absolute inset-0 bg-zinc-950 pointer-events-none" />
 
-        {/* Floating Text Animation BG */}
-        <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none flex flex-col justify-center gap-8">
-          <div className="animate-infinite-scroll whitespace-nowrap text-9xl font-black uppercase tracking-tighter">
-            CODE & ARCHITECTURE BRAND THEORY PRODUCTION LOGIC SOCIAL VELOCITY
+        {/* Multi-line Animated Background Text Marquee */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 flex flex-col justify-center gap-6 select-none">
+          <div className="flex whitespace-nowrap animate-marquee text-5xl md:text-8xl font-black tracking-tighter text-zinc-500">
+            SOFTWARE &bull; WEBSITE &bull; BRANDING &bull; PHOTOGRAPHY &bull; PRODUCTION &bull; GRAPHICS DESIGN &bull;&nbsp;
+            SOFTWARE &bull; WEBSITE &bull; BRANDING &bull; PHOTOGRAPHY &bull; PRODUCTION &bull; GRAPHICS DESIGN &bull;&nbsp;
           </div>
-          <div
-            className="animate-infinite-scroll whitespace-nowrap text-9xl font-black uppercase tracking-tighter"
-            style={{ animationDirection: "reverse" }}
-          >
-            NEXT.JS 15 COLOR GRADING IDENTITY SYSTEMS CONTENT VELOCITY
+          <div className="flex whitespace-nowrap animate-marquee-reverse text-5xl md:text-8xl font-black tracking-tighter text-brand-primary">
+            ARCHITECTURE &bull; LOGISTICS &bull; CINEMATIC STORYTELLING &bull; VISUAL IDENTITY &bull; INSIGHTS &bull;&nbsp;
+            ARCHITECTURE &bull; LOGISTICS &bull; CINEMATIC STORYTELLING &bull; VISUAL IDENTITY &bull; INSIGHTS &bull;&nbsp;
+          </div>
+          <div className="flex whitespace-nowrap animate-marquee text-5xl md:text-8xl font-black tracking-tighter text-zinc-600">
+            ZENN STUDIOS &bull; CASE STUDIES &bull; PRODUCTION STORIES &bull; ERP &bull; MEDIA &bull;&nbsp;
+            ZENN STUDIOS &bull; CASE STUDIES &bull; PRODUCTION STORIES &bull; ERP &bull; MEDIA &bull;&nbsp;
           </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <FadeIn direction="up">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-              Insights &amp; Perspectives.
+            <div className="inline-flex items-center gap-2 bg-brand-primary/10 border border-brand-primary/30 text-brand-primary rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider mb-6">
+              <Sparkles className="w-4 h-4" /> Client Case Studies & Production Intelligence
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6">
+              Engineering, Design & <br className="hidden md:block" /> Visual Production Stories.
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
-              Deep dives into the logic, craft, and future of digital
-              innovation.
+            <p className="text-zinc-400 text-lg md:text-xl max-w-3xl mx-auto mb-12">
+              Deep dives into how we solve complex business problems — from custom enterprise ERPs and web platforms to 3-day product photography productions and commercial shoot videos.
             </p>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* Section 2: Featured Article (The Highlight) */}
-      <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn>
-            <Link
-              href={`/insights/${articles[0].slug}`}
-              className="group block"
-            >
-              <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 items-center bg-zinc-950 rounded-3xl overflow-hidden border border-zinc-900 hover:border-brand-primary/50 transition-colors duration-500">
-                {/* Cover Visual */}
-                <div className="w-full lg:w-3/5 h-64 lg:h-[450px] relative overflow-hidden bg-zinc-900">
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black group-hover:scale-105 transition-transform duration-1000" />
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(182,51,46,0.1),_transparent_65%)]" />
-                  {/* Grid lines */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-                      backgroundSize: "50px 50px",
-                    }}
-                  />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                    <span className="bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
-                      Code &amp; Architecture
-                    </span>
-                    <p className="text-zinc-600 font-mono text-xs uppercase tracking-widest">
-                      Featured Article
-                    </p>
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-2/5 p-10 lg:p-12 pl-10 lg:pl-0 flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
-                      Featured
-                    </span>
-                    <span className="text-zinc-500 text-sm flex items-center">
-                      <Clock className="w-4 h-4 mr-1.5" /> {articles[0].time} read
-                    </span>
-                    <span className="text-zinc-500 text-sm">{articles[0].date}</span>
-                  </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 group-hover:text-brand-primary transition-colors leading-tight">
-                    {articles[0].title}
-                  </h2>
-                  <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-                    {articles[0].excerpt}
-                  </p>
-                  <span className="inline-flex items-center text-brand-primary font-bold">
-                    Read Featured Article{" "}
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
-                  </span>
-                </div>
-              </div>
-            </Link>
+          {/* Filter Bar */}
+          <FadeIn direction="up" delay={0.3} className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
+                  activeFilter === cat
+                    ? "bg-brand-primary text-white shadow-[0_0_20px_rgba(182,51,46,0.4)] scale-105"
+                    : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </FadeIn>
         </div>
       </section>
 
-      {/* Section 3: The Knowledge Grid (Main Feed) */}
-      <section className="py-20 bg-zinc-950 relative border-t border-zinc-900">
+      {/* Section 2: Articles Grid */}
+      <section className="py-24 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-6">
-            <h2 className="text-3xl font-bold tracking-tighter">
-              Latest Thinking
-            </h2>
-
-            {/* Filterable Bar */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveFilter(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                    activeFilter === cat
-                      ? "bg-brand-primary text-white"
-                      : "bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-900"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((article, idx) => (
-              <FadeIn key={article.id} delay={idx * 0.05}>
+              <FadeIn key={article.slug} delay={idx * 0.05}>
                 <Link
                   href={`/insights/${article.slug}`}
-                  className="glass-card rounded-2xl overflow-hidden group block h-full flex flex-col"
+                  className="glass-card rounded-3xl p-8 flex flex-col justify-between h-full hover:border-brand-primary/50 transition-all duration-300 group shadow-lg"
                 >
-                  {/* Thumbnail */}
-                  <div className="h-48 bg-zinc-900 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-950 scale-100 group-hover:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(182,51,46,0.06),_transparent_70%)]" />
-                  </div>
-
-                  <div className="p-8 flex flex-col flex-grow">
-                    <div className="flex items-center gap-3 mb-4">
+                  <div>
+                    {/* Category badge */}
+                    <div className="flex items-center justify-between mb-6">
                       <span
-                        className={`text-xs font-bold uppercase tracking-wider ${
-                          categoryColors[article.category] ?? "text-brand-primary"
+                        className={`text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border ${
+                          categoryColors[article.category] || "text-zinc-400 border-zinc-800 bg-zinc-900"
                         }`}
                       >
                         {article.category}
                       </span>
-                      <span className="w-1 h-1 rounded-full bg-zinc-700" />
-                      <span className="text-zinc-500 text-xs">{article.time}</span>
+                      <div className="flex items-center text-xs text-zinc-500 font-mono gap-1">
+                        <Clock className="w-3.5 h-3.5" />
+                        {article.time}
+                      </div>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-primary transition-colors leading-snug">
+                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors leading-snug">
                       {article.title}
                     </h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow">
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6">
                       {article.excerpt}
                     </p>
+                  </div>
 
-                    <span className="inline-flex items-center text-sm font-semibold text-white group-hover:text-brand-primary transition-colors mt-auto">
-                      Read Article{" "}
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <div className="pt-6 border-t border-zinc-800/80 flex items-center justify-between mt-auto">
+                    <span className="text-xs font-mono text-zinc-500">
+                      Client: <span className="text-zinc-300 font-semibold">{article.client}</span>
+                    </span>
+                    <span className="text-xs font-semibold text-brand-primary group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                      Read Story <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </Link>
@@ -226,56 +282,28 @@ export default function Insights() {
         </div>
       </section>
 
-      {/* Section 4: Newsletter Opt-in (The Hook) */}
-      <section className="py-32 bg-black border-y border-zinc-900 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(182,51,46,0.15),_transparent_60%)]" />
-        <div className="max-w-2xl mx-auto px-6 relative z-10">
+      {/* Section 3: Newsletter CTA */}
+      <section className="py-24 bg-black border-t border-zinc-900">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Stay ahead of the curve.
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
+              Get Production & Code Intelligence Sent Direct.
             </h2>
-            <p className="text-zinc-400 mb-10 text-lg">
-              Monthly insights delivered directly to your inbox. No spam, just
-              architecture.
+            <p className="text-zinc-400 max-w-xl mx-auto mb-10 text-base">
+              Join 1,000+ founders, engineers, and creators receiving our case studies, production teardowns, and tech insights monthly.
             </p>
-
-            <form
-              className="flex flex-col sm:flex-row gap-4"
-              onSubmit={(e) => e.preventDefault()}
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your professional email"
-                className="w-full sm:flex-grow bg-zinc-900 border border-zinc-800 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
-                required
+                placeholder="Enter your email"
+                className="w-full px-5 py-3.5 rounded-full bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:border-brand-primary text-sm"
               />
-              <button
-                type="submit"
-                className="bg-brand-primary hover:bg-brand-primary/80 text-white font-bold px-8 py-4 rounded-xl transition-colors flex items-center justify-center whitespace-nowrap"
-              >
-                Subscribe <Send className="w-4 h-4 ml-2" />
+              <button className="w-full sm:w-auto bg-brand-primary hover:bg-brand-primary/80 text-white px-8 py-3.5 rounded-full text-sm font-bold transition-all shadow-lg flex items-center justify-center gap-2 whitespace-nowrap">
+                Subscribe <Send className="w-4 h-4" />
               </button>
-            </form>
+            </div>
           </FadeIn>
         </div>
-      </section>
-
-      {/* Section 5: Footer CTA */}
-      <section className="py-20 bg-zinc-950 text-center">
-        <FadeIn>
-          <p className="text-zinc-500 mb-4 font-mono text-sm uppercase tracking-widest">
-            Feedback
-          </p>
-          <h3 className="text-2xl font-bold mb-6">
-            Have a topic you want us to cover?
-          </h3>
-          <Link
-            href="/contact"
-            className="text-brand-primary hover:text-white font-semibold transition-colors border-b border-brand-primary/30 hover:border-white pb-1"
-          >
-            Suggest a Topic directly to our editorial team
-          </Link>
-        </FadeIn>
       </section>
     </div>
   );

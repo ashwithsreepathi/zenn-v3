@@ -1,5 +1,7 @@
 import FadeIn from "@/components/FadeIn";
-import { ArrowRight, Code2, Film, Layers, MapPin, Network, PenTool, Search } from "lucide-react";
+import GoogleMap from "@/components/GoogleMap";
+import { ArrowRight, Code2, Film, Layers, Network, PenTool, Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
@@ -15,18 +17,9 @@ export default function About() {
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto mb-16">
+            <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">
               We don't just build websites or film videos; we create the digital architecture that supports your business's legacy.
             </p>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.4}>
-            <div className="w-full max-w-5xl mx-auto aspect-video rounded-3xl overflow-hidden relative glass-card">
-              <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 to-zinc-800 opacity-50"></div>
-              {/* Abstract Placeholder for Architecture/Code visual */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-zinc-600 font-mono text-sm tracking-widest uppercase">Visual: Code / Architectural Blueprint Concept</p>
-              </div>
-            </div>
           </FadeIn>
         </div>
       </section>
@@ -56,6 +49,32 @@ export default function About() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Section: Zenn Ecosystem Flowchart */}
+      <section className="py-24 bg-black border-t border-zinc-900">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <FadeIn>
+            <span className="text-brand-primary font-mono text-xs uppercase tracking-widest bg-brand-primary/10 border border-brand-primary/30 px-4 py-1.5 rounded-full inline-block mb-4">
+              Architectural Integration
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">The Zenn Ecosystem Flowchart</h2>
+            <p className="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto mb-12">
+              How our software engineering, brand strategy, and visual media production operate as a unified growth engine.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="w-full aspect-[21/9] rounded-3xl overflow-hidden relative border border-zinc-800 shadow-[0_0_60px_rgba(182,51,46,0.2)] bg-zinc-950">
+              <Image
+                src="/images/brand/zenn-ecosystem.png"
+                alt="Zenn Ecosystem Flowchart"
+                fill
+                className="object-cover"
+                quality={95}
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -93,27 +112,21 @@ export default function About() {
       <section className="py-32 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-16 text-center">Our Presence</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-center">Our Presence</h2>
+            <p className="text-zinc-400 text-center text-lg mb-16">Serving Windsor, Brantford, and the GTA</p>
           </FadeIn>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
-              <div className="glass-card rounded-3xl overflow-hidden aspect-square md:aspect-video lg:aspect-square relative flex items-center justify-center p-8 text-center group cursor-crosshair">
-                <div className="absolute inset-0 bg-black/50 z-10"></div>
-                <div className="absolute inset-0 opacity-20 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Vancouver,BC&zoom=11&size=600x600&maptype=roadmap&style=feature:all|element:labels.text.fill|color:0x9ca3af&style=feature:all|element:labels.text.stroke|color:0x000000&style=feature:landscape|element:geometry|color:0x000000&style=feature:poi|element:geometry|color:0x282828&style=feature:road.highway|element:geometry.fill|color:0x000000&style=feature:road.highway|element:geometry.stroke|color:0x1f2937&style=feature:road.arterial|element:geometry|color:0x000000&style=feature:road.local|element:geometry|color:0x000000&style=feature:transit|element:geometry|color:0x282828&style=feature:water|element:geometry|color:0x111111')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
-                <div className="relative z-20 text-brand-primary flex flex-col items-center">
-                  <MapPin className="w-12 h-12 mb-4 drop-shadow-[0_0_15px_rgba(182,51,46,0.8)]" />
-                  <span className="font-mono text-sm tracking-widest text-zinc-300 bg-black/80 px-4 py-2 rounded-full border border-zinc-800">INTERACTIVE MAP PLACEHOLDER</span>
-                </div>
-              </div>
+              <GoogleMap className="aspect-square md:aspect-video lg:aspect-square w-full h-full min-h-[420px]" />
             </FadeIn>
             
             <FadeIn direction="left" delay={0.2}>
               <div className="space-y-12">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Headquarters</h3>
+                  <h3 className="text-2xl font-bold mb-4">Studio</h3>
                   <p className="text-zinc-400 leading-relaxed text-lg">
-                    123 Innovation Drive<br />
-                    Vancouver, BC V6B 1A1<br />
+                    125 Hunter Way<br />
+                    Brantford, ON N3T 0B1<br />
                     Canada
                   </p>
                 </div>
