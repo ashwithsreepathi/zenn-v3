@@ -41,12 +41,12 @@ yarn-error.log*
 next-env.d.ts
 
 # heavy media, videos, binaries & scratch
-website-media/
-scratch/
-*.msix
-*.mp4
-*.MP4
-public/videos/
-public/images/photography/
+# website-media/
+# scratch/
+# *.msix
+# *.mp4
+# *.MP4
+# public/videos/
+# public/images/photography/
 
 
